@@ -146,6 +146,30 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# move workspaces 1-5 to laptop monitor and workspaces 6-10 to second monitor
+workspace 1 output eDP-1
+workspace 2 output eDP-1
+workspace 3 output eDP-1
+workspace 4 output eDP-1
+workspace 5 output eDP-1
+workspace 6 output HDMI-1 DVI-I-1-1
+workspace 7 output HDMI-1 DVI-I-1-1
+workspace 8 output HDMI-1 DVI-I-1-1
+workspace 9 output HDMI-1 DVI-I-1-1
+workspace 10 output HDMI-1 DVI-I-1-1
+
+mode "monitor: [a]dd hdmi, [r]emove hdmi" {
+	bindsym a exec --no-startup-id "xrandr --output HDMI-1 --right-of eDP-1 --auto"
+	bindsym r exec --no-startup-id "xrandr --output HDMI-1 --off"
+	#bindsym a exec --no-startup-id "xrandr --output DVI-I-1-1 --right-of eDP-1 --auto"
+	#bindsym r exec --no-startup-id "xrandr --output DVI-I-1-1 --off"
+	
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+	bindsym $mod+m mode "default"
+}
+bindsym $mod+m mode "monitor: [a]dd hdmi, [r]emove hdmi"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -157,6 +181,7 @@ mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
 	bindsym l exec i3-msg exit
 	bindsym r exec systemctl reboot
 	bindsym s exec systemctl poweroff
+	
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
@@ -249,3 +274,5 @@ exec_always xrandr --dpi 170
 exec_always xrandr --output HDMI-1 --scale 1.25x1.25
 exec_always xrandr --output DVI-I-1-1 --scale 1x1
 exec_always nitrogen --restore
+
+
