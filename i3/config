@@ -214,19 +214,19 @@ mode "resize: [;|j] +- width, [k|l] +- height" {
 bindsym $mod+r mode "resize: [;|j] +- width, [k|l] +- height"
 
 # Bind lock screen key
-bindsym $mod+Shift+x exec i3lock -f -i /home/logan/.local/share/backgrounds/lock.png -c 000000
+bindsym $mod+Shift+x exec "i3lock -f -i $HOME/.local/share/backgrounds/lock.png -c 000000"
 # Bind lock and suspend
-bindsym $mod+Shift+z exec "i3lock -f -i /home/logan/.local/share/backgrounds/lock.png -c 000000 ; systemctl suspend"
+bindsym $mod+Shift+z exec "i3lock -f -i $HOME/.local/share/backgrounds/lock.png -c 000000 ; systemctl suspend"
 # Bind brightness
-bindsym $mod+F5 exec  "/home/logan/.config/i3status/set-brightness.sh down"
-bindsym $mod+F6 exec  "/home/logan/.config/i3status/set-brightness.sh up"
+bindsym $mod+F5 exec  "$HOME/.config/i3status/set-brightness.sh down"
+bindsym $mod+F6 exec  "$HOME/.config/i3status/set-brightness.sh up"
 # Bind volume
 bindsym $mod+F2 exec --no-startup-id "amixer set Master -q 5%-; amixer set Speaker -q 5%-; amixer set Headphone -q 5%-"
 bindsym $mod+F3 exec --no-startup-id "amixer set Master -q 5%+; amixer set Speaker -q 5%+; amixer set Headphone -q 5%+"
 # Bind screenshot
 mode "screenshot: [f]ullscreen, [s]election, [c]lipboard" {
-	bindsym --release f exec --no-startup-id scrot --multidisp --file '/home/logan/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png'
-       	bindsym --release s exec --no-startup-id scrot --freeze --select --file '/home/logan/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png'
+	bindsym --release f exec --no-startup-id scrot --multidisp --file '$HOME/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png'
+       	bindsym --release s exec --no-startup-id scrot --freeze --select --file '$HOME/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png'
        	bindsym --release c exec --no-startup-id scrot --freeze --select -e 'xclip -selection clipboard -t image/png -i $f'
 
         # back to normal: Enter or Escape or $mod+r
