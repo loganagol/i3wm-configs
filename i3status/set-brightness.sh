@@ -4,7 +4,7 @@
 # that number to current_brightness. i3status then reads this file and outputs
 # its value to the status bar.
 
-curr_percent=$(cat /home/logan/.config/i3status/current_brightness)
+curr_percent=$(cat $HOME/.config/i3status/current_brightness)
 
 if [[ $1 == "up" ]]; then
 	if [[ $curr_percent -le 10 ]]; then
@@ -24,4 +24,4 @@ current=$(cat /sys/class/backlight/intel_backlight/brightness)
 max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
 
 percentage=$((current * 100 / max))
-echo $percentage > /home/logan/.config/i3status/current_brightness
+echo $percentage > $HOME/.config/i3status/current_brightness
