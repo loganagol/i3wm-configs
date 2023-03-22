@@ -160,6 +160,7 @@ workspace 8 output DP-1-2
 workspace 9 output DP-1-2
 workspace 10 output DP-1-2
 
+# monitor add/delete mode, set to work with HDMI to USB-C Splitter
 set $monitor "monitor, splitter: [a]dd, [r]emove"
 mode $monitor {
 	bindsym a exec "xrandr --output DP-1-1 --right-of eDP-1 --auto && xrandr --output DP-1-2 --left-of eDP-1 --auto";  mode "default"
@@ -170,6 +171,11 @@ mode $monitor {
 	bindsym $mod+m mode "default"
 }
 bindsym $mod+m mode $monitor
+
+# application-specific rules
+for_window [title="Discord"] move container to workspace number $ws10
+for_window [title="Spotify"] move container to workspace number $ws10
+for_window [title="Zoom"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -273,8 +279,8 @@ bar {
 }
 
 # border options
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
 # Options for monitor scaling and wallpaper
 #	exec xrandr --output eDP-1 --mode 1920x1200
