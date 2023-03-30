@@ -152,19 +152,19 @@ workspace 2 output eDP-1
 workspace 3 output eDP-1
 workspace 4 output eDP-1
 
-workspace 5 output DP-1-1
-workspace 6 output DP-1-1
-workspace 7 output DP-1-1
+workspace 5 output DP-1-1 DP-2-1 DP-3-1
+workspace 6 output DP-1-1 DP-2-1 DP-3-1
+workspace 7 output DP-1-1 DP-2-1 DP-3-1
 
-workspace 8 output DP-1-2
-workspace 9 output DP-1-2
-workspace 10 output DP-1-2
+workspace 8 output DP-1-2 DP-2-2 DP-3-2
+workspace 9 output DP-1-2 DP-2-2 DP-3-2
+workspace 10 output DP-1-2 DP-2-2 DP-3-2
 
-# monitor add/delete mode, set to work with HDMI to USB-C Splitter
+# monitor add/remove mode, set to work with HDMI to USB-C Splitter
 set $monitor "monitor, splitter: [a]dd, [r]emove"
 mode $monitor {
-	bindsym a exec "xrandr --output DP-1-1 --right-of eDP-1 --auto && xrandr --output DP-1-2 --left-of eDP-1 --auto";  mode "default"
-	bindsym r exec "xrandr --output DP-1-1 --off && xrandr --output DP-1-2 --off"; mode "default"
+	bindsym a exec "$HOME/.config/i3/scripts/addremovemonitor.sh add";  mode "default"
+	bindsym r exec "$HOME/.config/i3/scripts/addremovemonitor.sh remove"; mode "default"
 	
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
@@ -286,8 +286,6 @@ default_floating_border pixel 1
 #	exec xrandr --output eDP-1 --mode 1920x1200
 exec_always xrandr --dpi 170
 exec_always xrandr --output HDMI-1 --scale 1.25x1.25
-exec_always xrandr --output DP-1-1 --scale 1.25x1.25
-exec_always xrandr --output DP-1-2 --scale 1x1
 exec_always xrandr --output DVI-I-1-1 --scale 1x1
 exec_always nitrogen --restore
 
