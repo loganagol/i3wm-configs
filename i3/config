@@ -176,6 +176,7 @@ bindsym $mod+m mode $monitor
 for_window [title="Discord"] move container to workspace number $ws10
 for_window [title="Spotify"] move container to workspace number $ws10
 for_window [title="Zoom"] floating enable
+for_window [class="Org.gnome.Nautilus"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
