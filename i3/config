@@ -160,6 +160,15 @@ workspace 8 output DP-1-2 DP-2-2 DP-3-2
 workspace 9 output DP-1-2 DP-2-2 DP-3-2
 workspace 10 output DP-1-2 DP-2-2 DP-3-2
 
+# set tabbed layout on last workspace
+for_window [workspace=$ws10] layout tabbed
+
+# application-specific rules
+for_window [title="Discord"] move container to workspace number $ws10
+for_window [title="Spotify"] move container to workspace number $ws10
+for_window [title="Zoom"] floating enable
+for_window [class="Org.gnome.Nautilus"] floating enable
+
 # monitor add/remove mode, set to work with HDMI to USB-C Splitter
 set $monitor "monitor, splitter: [a]dd, [r]emove"
 mode $monitor {
@@ -171,12 +180,6 @@ mode $monitor {
 	bindsym $mod+m mode "default"
 }
 bindsym $mod+m mode $monitor
-
-# application-specific rules
-for_window [title="Discord"] move container to workspace number $ws10
-for_window [title="Spotify"] move container to workspace number $ws10
-for_window [title="Zoom"] floating enable
-for_window [class="Org.gnome.Nautilus"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -20,10 +20,10 @@ if [[ $1 == "add" ]]; then
 elif [[ $1 == "remove" ]]; then
 	xrandr --output DP-1-1 --off
 	xrandr --output DP-1-2 --off
-	
+
 	xrandr --output DP-2-1 --off
 	xrandr --output DP-2-2 --off
-	
+
 	xrandr --output DP-3-1 --off
 	xrandr --output DP-3-2 --off
 fi
